@@ -189,6 +189,27 @@ public class FXMLDocumentController implements Initializable {
     private final BooleanProperty sPressed = new SimpleBooleanProperty();
     private final BooleanProperty dPressed = new SimpleBooleanProperty();
 
+    private AnimationTimer gameTimer;
+    private static final int MOVEMENT_VARIABLE = 2;
+
+    private static final int MAX_CARS = 35;
+    private List<Image> carImages = new ArrayList<>();
     
+    private Label timerLabel;
+    private long startTime;
+    private long elapsedTime;
+
+    private MediaPlayer sndtrk;
+    private MediaPlayer dth;
+    private MediaPlayer win;
+    private MediaPlayer clk;
+
+    private static final Media SOUNDTRACK = new Media(FXMLDocumentController.class.getResource("/frogger/sfx/soundtrack.mp3").toExternalForm());
+    private static final Media DEATH = new Media(FXMLDocumentController.class.getResource("/frogger/sfx/death.mp3").toExternalForm());
+    private static final Media WINNING = new Media(FXMLDocumentController.class.getResource("/frogger/sfx/win.mp3").toExternalForm());
+    private static final Media CLICK = new Media(FXMLDocumentController.class.getResource("/frogger/sfx/click.mp3").toExternalForm());
+
+    private int lives = 3;
+    private Label livesLabel;
 
 }
