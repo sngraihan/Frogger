@@ -155,3 +155,23 @@ class Frog extends GameElement {
         this.rectangle.setTranslateY(y);
     }
 }
+
+
+public class FXMLDocumentController implements Initializable {
+    @FXML
+    private AnchorPane ruang;
+
+    @FXML
+    private ImageView tombolStart;
+
+    @FXML
+    private ImageView menu;
+
+    private Frog frog;
+
+    @FXML
+    private ImageView jalan1;
+
+    
+
+}
