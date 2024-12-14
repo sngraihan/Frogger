@@ -19,3 +19,10 @@ import javafx.stage.Stage;
 import javafx.scene.control.Label;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+
+/**
+ * FXML Controller class
+ *
+ * @author raiha
+ */
+public class WinController implements Initializable {
