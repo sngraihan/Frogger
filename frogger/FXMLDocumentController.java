@@ -1,4 +1,4 @@
-package frogger;
+    package frogger;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -171,6 +171,23 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private ImageView jalan1;
+    
+    private List<Car> cars = new ArrayList<>();
+    private boolean gameStarted = false;
+
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
+    
+    private static final double SCREEN_WIDTH = 800;
+    private static final double SCREEN_HEIGHT = 600;
+    private static final double FROG_WIDTH = 28;
+    private static final double FROG_HEIGHT = 23;
+
+    private final BooleanProperty wPressed = new SimpleBooleanProperty();
+    private final BooleanProperty aPressed = new SimpleBooleanProperty();
+    private final BooleanProperty sPressed = new SimpleBooleanProperty();
+    private final BooleanProperty dPressed = new SimpleBooleanProperty();
 
     
 
