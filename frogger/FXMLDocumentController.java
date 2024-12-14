@@ -314,5 +314,36 @@ public class FXMLDocumentController implements Initializable {
             showGameOverMessage();
         }
     }
+
+    private void resetFrogPosition() {
+        frog.resetPosition(400 - 14, 600 - 23);
+    }
+
     
+
+    @FXML
+    private void klik(MouseEvent event) {
+        lives = 3;
+        livesLabel.setText("Lives: " + lives);
+        startTime = System.nanoTime();
+        clk.play();
+
+        FadeTransition fadeButton = new FadeTransition(Duration.seconds(1), tombolStart);
+        fadeButton.setFromValue(1.0);
+        fadeButton.setToValue(0.0);
+        fadeButton.setOnFinished(e -> tombolStart.setVisible(false));
+
+        FadeTransition fadeMenu = new FadeTransition(Duration.seconds(1), menu);
+        fadeMenu.setFromValue(1.0);
+        fadeMenu.setToValue(0.0);
+        fadeMenu.setOnFinished(e -> menu.setVisible(false));
+
+        fadeButton.play();
+        fadeMenu.play();
+        sndtrk.play();
+
+        gameStarted = true;
+        resetFrogPosition();
+        ruang.requestFocus();
+    }
 }
