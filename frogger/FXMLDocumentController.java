@@ -289,5 +289,30 @@ public class FXMLDocumentController implements Initializable {
         timerLabel.setTranslateY(10);
         ruang.getChildren().add(timerLabel);
     }
+
+    private void checkState() {
+        for (Car car : cars) {
+            if (frog.intersects(car.getNode())) {
+                resetFrogPosition();
+                loseLife();
+                break;
+            }
+        }
+
+        if (frog.getY() <= 0 && gameStarted) { // Adjusted winning condition
+            gameStarted = false;
+            showWinMessage();
+        }
+    }
+
+    private void loseLife() {
+        lives--;
+        livesLabel.setText("Lives: " + lives);
+        resetFrogPosition();
+
+        if (lives <= 0) {
+            showGameOverMessage();
+        }
+    }
     
 }
