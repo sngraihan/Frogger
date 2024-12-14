@@ -26,3 +26,18 @@ import javafx.scene.media.MediaPlayer;
  * @author raiha
  */
 public class WinController implements Initializable {
+  @FXML
+    private ImageView reset;
+    @FXML
+    private Label scoreLabel;
+    @FXML
+    private Label timeLabel;
+    @FXML
+    private Label livesLabel;
+
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
+    
+    private MediaPlayer clk;
+    private static final Media CLICK = new Media(FXMLDocumentController.class.getResource("/frogger/sfx/click.mp3").toExternalForm());
