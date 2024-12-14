@@ -319,6 +319,25 @@ public class FXMLDocumentController implements Initializable {
         frog.resetPosition(400 - 14, 600 - 23);
     }
 
+    private void showGameOverMessage() {
+        gameStarted = false;
+        sndtrk.stop();
+        dth.play();
+        loadFXML("/frogger/Menu.fxml");
+    }
+
+    private void loadFXML(String fxmlPath) {
+        try {
+            root = FXMLLoader.load(getClass().getResource(fxmlPath));
+            stage = (Stage) ruang.getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error loading FXML: " + e.getMessage());
+        }
+    }
     
 
     @FXML
