@@ -346,4 +346,68 @@ public class FXMLDocumentController implements Initializable {
         resetFrogPosition();
         ruang.requestFocus();
     }
+
+    private void movementSetup() {
+        ruang.setOnKeyPressed(e -> {
+            if (e.getCode() == KeyCode.W) {
+                wPressed.set(true);
+            } else if (e.getCode() == KeyCode.A) {
+                aPressed.set(true);
+            } else if (e.getCode() == KeyCode.S) {
+                sPressed.set(true);
+            } else if (e.getCode() == KeyCode.D) {
+                dPressed.set(true);
+            }
+        });
+
+        ruang.setOnKeyReleased(e -> {
+            if (e.getCode() == KeyCode.W) {
+                wPressed.set(false);
+            } else if (e.getCode() == KeyCode.A) {
+                aPressed.set(false);
+            } else if (e.getCode() == KeyCode.S) {
+                sPressed.set(false);
+            } else if (e.getCode() == KeyCode.D) {
+                dPressed.set(false);
+            }
+        });
+    }
+
+    private void handleFrogMovement() {
+        double newX = frog.getX();
+        double newY = frog.getY();
+
+        // Movement logic with boundary checks
+        if (wPressed.get()) {
+            newY -= MOVEMENT_VARIABLE;
+        }
+        if (aPressed.get()) {
+            newX -= MOVEMENT_VARIABLE;
+        }
+        if (sPressed.get()) {
+            newY += MOVEMENT_VARIABLE;
+        }
+        if (dPressed.get()) {
+            newX += MOVEMENT_VARIABLE;
+        }
+
+        // Boundary constraints
+        newX = Math.max(0, Math.min(newX, SCREEN_WIDTH - FROG_WIDTH));
+        newY = Math.max(0, Math.min(newY, SCREEN_HEIGHT - FROG_HEIGHT));
+
+        // Update frog position
+        frog.setX(newX);
+        frog.setY(newY);
+        frog.getNode().setTranslateX(newX);
+        frog.getNode().setTranslateY(newY);
+    }
+    
+    private int calculateScore() {
+        int timeBonus = (int) (1000 - elapsedTime * 10); // Faster times get more points
+        int livesBonus = lives * 500; // Each remaining life adds points
+        
+        int totalScore = Math.max(0, timeBonus + livesBonus);
+        return totalScore;
+    }
+    
 }
