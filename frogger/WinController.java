@@ -41,3 +41,15 @@ public class WinController implements Initializable {
     
     private MediaPlayer clk;
     private static final Media CLICK = new Media(FXMLDocumentController.class.getResource("/frogger/sfx/click.mp3").toExternalForm());
+
+@Override
+    public void initialize(URL url, ResourceBundle rb) {
+        clk = new MediaPlayer(CLICK);
+        clk.setVolume(0.7);
+    }    
+
+    public void setScore(int score, long time, int lives) {
+        scoreLabel.setText("Score: " + score);
+        timeLabel.setText(String.format("Time: %.2fs", (double)time));
+        livesLabel.setText("Remaining Lives: " + lives);
+    }
