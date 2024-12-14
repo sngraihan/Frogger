@@ -53,3 +53,21 @@ public class WinController implements Initializable {
         timeLabel.setText(String.format("Time: %.2fs", (double)time));
         livesLabel.setText("Remaining Lives: " + lives);
     }
+
+@FXML
+    private void tekanSaya(MouseEvent event) {
+        clk.play();
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            
+            stage.setScene(new Scene(root));
+            stage.setTitle("Game Scene");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+}
