@@ -54,3 +54,57 @@ abstract class GameElement {
 
     public abstract Node getNode();
 }
+
+class Car extends GameElement {
+    private static final double DEFAULT_SPEED = 3.0;
+    private static final int DEFAULT_DIRECTION = 1;
+    private double speed;
+    private int direction;
+    private ImageView imageView;
+
+    public Car(double x, double y, double speed, int direction, Image image) {
+        super(x, y);
+        this.speed = speed;
+        this.direction = direction;
+        this.imageView = new ImageView(image);
+        initializeCar();
+    }
+
+    public static Car createRandomCar(List<Image> carImages, double[] lanes) {
+        Image carImage = carImages.get((int) (Math.random() * carImages.size()));
+        boolean fromRightToLeft = Math.random() < 0.5;
+        double speed = Math.random() * 4 + 1;
+        double laneY = lanes[(int) (Math.random() * lanes.length)];
+        double startX = fromRightToLeft ? 800 : -50;
+        return new Car(startX, laneY, speed, fromRightToLeft ? -1 : 1, carImage);
+    }
+
+    private void initializeCar() {
+        imageView.setFitWidth(60);
+        imageView.setFitHeight(40);
+        imageView.setPreserveRatio(true);
+        imageView.setTranslateX(x);
+        imageView.setTranslateY(y);
+        if (direction == -1) {
+            imageView.setScaleX(-1);
+        }
+    }
+
+    @Override
+    public Node getNode() {
+        return imageView;
+    }
+
+    public double getSpeed() {
+        return speed;
+    }
+
+    public int getDirection() {
+        return direction;
+    }
+
+    public void updatePosition() {
+        x += speed * direction;
+        imageView.setTranslateX(x);
+    }
+}
