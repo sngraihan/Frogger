@@ -246,4 +246,18 @@ public class FXMLDocumentController implements Initializable {
         gameTimer.start();
     }
 
+    private void setupFrog() {
+        Image frogImage = new Image(getClass().getResourceAsStream("/frogger/images/frog.png"));
+        frog = new Frog(400 - 14, 600 - 23, frogImage);
+        ruang.getChildren().add(frog.getNode());
+    }
+
+    private void loadCarImages() {
+        carImages.add(new Image(getClass().getResourceAsStream("/frogger/images/van.png")));
+        carImages.add(new Image(getClass().getResourceAsStream("/frogger/images/taxi.png")));
+        carImages.add(new Image(getClass().getResourceAsStream("/frogger/images/smalltruck.png")));
+        carImages.add(new Image(getClass().getResourceAsStream("/frogger/images/orangecar.png")));
+        carImages.add(new Image(getClass().getResourceAsStream("/frogger/images/police.png")));
+    }
+    
 }
