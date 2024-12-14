@@ -4,7 +4,6 @@
 ![WhatsApp Image 2024-12-13 at 21 36 44_459407b8](https://github.com/user-attachments/assets/08d8c50e-2aab-4669-a41c-f391dd02301a)
 
 
-Kelas: D
 Nama Anggota Kelompok 3:
 1. Raihan Andi Saungnaga (2317051058)
 2. Rizqi ananda pratama (2317051048)
