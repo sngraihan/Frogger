@@ -6,5 +6,5 @@
 
 Nama Anggota Kelompok 3:
 1. Raihan Andi Saungnaga (2317051058)
-2. Rizqi ananda pratama (2317051048)
-3. Galvin Citraka Pandya Nugraha (2317051087)
+2. Rizqi ananda pratama (2317051038)
+3. Galvin Citraka Pandya Nugraha (2317051014)
