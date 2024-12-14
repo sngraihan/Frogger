@@ -108,3 +108,50 @@ class Car extends GameElement {
         imageView.setTranslateX(x);
     }
 }
+
+class Frog extends GameElement {
+    private Rectangle rectangle;
+
+    public Frog(double x, double y, Image image) {
+        super(x, y);
+        this.rectangle = new Rectangle(28, 23);
+        this.rectangle.setFill(new javafx.scene.paint.ImagePattern(image));
+        this.rectangle.setTranslateX(x);
+        this.rectangle.setTranslateY(y);
+    }
+
+    @Override
+    public Node getNode() {
+        return rectangle;
+    }
+
+    public void resetPosition(double startX, double startY) {
+        x = startX;
+        y = startY;
+        rectangle.setTranslateX(x);
+        rectangle.setTranslateY(y);
+    }
+
+    public void move(double dx, double dy) {
+        x += dx;
+        y += dy;
+        rectangle.setTranslateX(x);
+        rectangle.setTranslateY(y);
+    }
+
+    public boolean intersects(Node other) {
+        return rectangle.getBoundsInParent().intersects(other.getBoundsInParent());
+    }
+    
+    @Override
+    public void setX(double x) {
+        this.x = x;
+        this.rectangle.setTranslateX(x);
+    }
+
+    @Override
+    public void setY(double y) {
+        this.y = y;
+        this.rectangle.setTranslateY(y);
+    }
+}
