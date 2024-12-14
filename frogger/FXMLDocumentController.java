@@ -326,6 +326,29 @@ public class FXMLDocumentController implements Initializable {
         loadFXML("/frogger/Menu.fxml");
     }
 
+    private void showWinMessage() {
+        gameStarted = false;
+        sndtrk.stop();
+        win.play();
+        int score = calculateScore();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/frogger/Win.fxml"));
+            root = loader.load();
+            
+            // If Win screen controller has a method to set score, use it
+            WinController winController = loader.getController();
+            winController.setScore(score, elapsedTime, lives);
+
+            stage = (Stage) ruang.getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error loading Win FXML: " + e.getMessage());
+        }
+    }
+
     private void loadFXML(String fxmlPath) {
         try {
             root = FXMLLoader.load(getClass().getResource(fxmlPath));
