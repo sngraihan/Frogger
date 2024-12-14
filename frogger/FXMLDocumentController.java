@@ -212,4 +212,38 @@ public class FXMLDocumentController implements Initializable {
     private int lives = 3;
     private Label livesLabel;
 
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        movementSetup();
+        setupLivesDisplay();
+        setupTimerDisplay();
+        loadCarImages();
+        setupFrog();
+
+        sndtrk = new MediaPlayer(SOUNDTRACK);
+        sndtrk.setVolume(0.7);
+        sndtrk.setOnEndOfMedia(() -> sndtrk.seek(Duration.ZERO));
+
+        dth = new MediaPlayer(DEATH);
+        dth.setVolume(0.7);
+
+        win = new MediaPlayer(WINNING);
+        win.setVolume(0.7);
+        
+        clk = new MediaPlayer(CLICK);
+        clk.setVolume(0.7);
+
+        gameTimer = new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                if (gameStarted) {
+                    updateTimerDisplay();
+                    onUpdate();
+                }
+                handleFrogMovement();
+            }
+        };
+        gameTimer.start();
+    }
+
 }
