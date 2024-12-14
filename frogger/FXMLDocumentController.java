@@ -259,5 +259,35 @@ public class FXMLDocumentController implements Initializable {
         carImages.add(new Image(getClass().getResourceAsStream("/frogger/images/orangecar.png")));
         carImages.add(new Image(getClass().getResourceAsStream("/frogger/images/police.png")));
     }
+
+     private void onUpdate() {
+        if (gameStarted) {
+            for (int i = cars.size() - 1; i >= 0; i--) {
+                Car car = cars.get(i);
+                car.updatePosition();
+                if (car.getX() > 800 || car.getX() < -50) {
+                    ruang.getChildren().remove(car.getNode());
+                    cars.remove(i);
+                }
+            }
+
+            while (cars.size() < MAX_CARS) {
+                Car car = Car.createRandomCar(carImages, new double[]{40, 83, 127, 169, 208, 252, 291, 329, 370, 412, 451, 489});
+                cars.add(car);
+                ruang.getChildren().add(car.getNode());
+            }
+
+            checkState();
+        }
+    }
+    
+    private void setupTimerDisplay() {
+        timerLabel = new Label("Time: 0.00s");
+        timerLabel.setFont(javafx.scene.text.Font.font(20));
+        timerLabel.setTextFill(Color.BLACK);
+        timerLabel.setTranslateX(650); // Positioned in top right corner
+        timerLabel.setTranslateY(10);
+        ruang.getChildren().add(timerLabel);
+    }
     
 }
